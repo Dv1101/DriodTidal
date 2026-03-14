@@ -1,0 +1,5 @@
+  Determining projects to restore...
+c:\Files\Code\Dotnet\DriodTidal\DroidTidal.csproj : error NU1102: Unable to find package Microsoft.Windows.SDK.NET.Ref with version (= 10.0.22621.49)
+c:\Files\Code\Dotnet\DriodTidal\DroidTidal.csproj : error NU1102:   - Found 378 version(s) in nuget.org [ Nearest version: 10.0.22621.52 ]
+c:\Files\Code\Dotnet\DriodTidal\DroidTidal.csproj : error NU1102:   - Found 0 version(s) in Microsoft Visual Studio Offline Packages
+  Failed to restore c:\Files\Code\Dotnet\DriodTidal\DroidTidal.csproj (in 541 ms).

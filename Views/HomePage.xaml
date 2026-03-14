@@ -1,0 +1,63 @@
+<Page
+    x:Class="DroidTidal.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="using:DroidTidal.Models"
+    Loaded="Page_Loaded">
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Padding="0,0,0,100">
+            <TextBlock Text="Home" Style="{StaticResource PageHeader}"/>
+
+            <!-- Recently Played -->
+            <TextBlock Text="Recently Played" Style="{StaticResource SectionHeader}"/>
+            <GridView x:Name="RecentGrid" ItemClick="RecentTrack_Click" IsItemClickEnabled="True"
+                      SelectionMode="None">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Track">
+                        <Border Style="{StaticResource CardBorder}" Width="160" Margin="4">
+                            <StackPanel Spacing="8">
+                                <Border CornerRadius="8" Height="140" Width="140">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{x:Bind CoverUrl}" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="{x:Bind Title}" Style="{StaticResource TrackTitle}" MaxWidth="140"/>
+                                <TextBlock Text="{x:Bind ArtistName}" Style="{StaticResource TrackSubtitle}" MaxWidth="140"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+
+            <!-- Recommendations -->
+            <TextBlock x:Name="RecsHeader" Text="Recommended For You" Style="{StaticResource SectionHeader}"
+                       Visibility="Collapsed"/>
+            <GridView x:Name="RecsGrid" ItemClick="RecTrack_Click" IsItemClickEnabled="True"
+                      SelectionMode="None">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Track">
+                        <Border Style="{StaticResource CardBorder}" Width="160" Margin="4">
+                            <StackPanel Spacing="8">
+                                <Border CornerRadius="8" Height="140" Width="140">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{x:Bind CoverUrl}" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="{x:Bind Title}" Style="{StaticResource TrackTitle}" MaxWidth="140"/>
+                                <TextBlock Text="{x:Bind ArtistName}" Style="{StaticResource TrackSubtitle}" MaxWidth="140"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+
+            <!-- Empty State -->
+            <StackPanel x:Name="EmptyState" HorizontalAlignment="Center" Spacing="12" Margin="0,60,0,0">
+                <FontIcon Glyph="&#xE8D6;" FontSize="48" Opacity="0.3"/>
+                <TextBlock Text="Start by searching for your favorite music"
+                           FontSize="16" Opacity="0.5" TextAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

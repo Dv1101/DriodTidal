@@ -1,0 +1,96 @@
+<Page
+    x:Class="DroidTidal.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Loaded="Page_Loaded">
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Padding="0,0,0,100" MaxWidth="600">
+            <TextBlock Text="Settings" Style="{StaticResource PageHeader}"/>
+
+            <!-- API Configuration -->
+            <TextBlock Text="API Configuration" Style="{StaticResource SectionHeader}"/>
+            <Border Style="{StaticResource CardBorder}">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="API Base URL" FontWeight="SemiBold"/>
+                    <TextBlock Text="The Hi-Fi API instance to connect to for streaming."
+                               Style="{StaticResource TrackSubtitle}"/>
+                    <TextBox x:Name="ApiUrlBox" PlaceholderText="https://hifi.520.be"
+                             TextChanged="ApiUrl_TextChanged"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Audio Quality -->
+            <TextBlock Text="Audio Quality" Style="{StaticResource SectionHeader}"/>
+            <Border Style="{StaticResource CardBorder}">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Streaming Quality" FontWeight="SemiBold"/>
+                    <TextBlock Text="Higher quality requires more bandwidth."
+                               Style="{StaticResource TrackSubtitle}"/>
+                    <ComboBox x:Name="QualityCombo" SelectionChanged="Quality_Changed" MinWidth="200">
+                        <ComboBoxItem Content="Hi-Res Lossless (up to 24-bit/192kHz)" Tag="HI_RES_LOSSLESS"/>
+                        <ComboBoxItem Content="CD Lossless (16-bit/44.1kHz)" Tag="LOSSLESS"/>
+                        <ComboBoxItem Content="High (320kbps AAC)" Tag="HIGH"/>
+                        <ComboBoxItem Content="Low (96kbps AAC)" Tag="LOW"/>
+                    </ComboBox>
+                </StackPanel>
+            </Border>
+
+            <!-- About -->
+            <TextBlock Text="About" Style="{StaticResource SectionHeader}"/>
+            <Border Style="{StaticResource CardBorder}">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="DroidTidal" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Text="A modern, minimal TIDAL client for Windows."
+                               Style="{StaticResource TrackSubtitle}"/>
+                    <TextBlock Style="{StaticResource TrackSubtitle}">
+                        <Run Text="Powered by "/>
+                        <Hyperlink NavigateUri="https://github.com/uimaxbai/hifi-api">Hi-Fi API</Hyperlink>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TrackSubtitle}">
+                        <Run Text="Inspired by "/>
+                        <Hyperlink NavigateUri="https://monochrome.tf">Monochrome</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <!-- Keyboard Shortcuts Reference -->
+            <TextBlock Text="Keyboard Shortcuts" Style="{StaticResource SectionHeader}"/>
+            <Border Style="{StaticResource CardBorder}">
+                <Grid ColumnSpacing="24" RowSpacing="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Space" FontFamily="Consolas" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Play / Pause"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Shift+→" FontFamily="Consolas" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Next track"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Shift+←" FontFamily="Consolas" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Previous track"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="↑ / ↓" FontFamily="Consolas" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="Volume up / down"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="S" FontFamily="Consolas" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="Toggle shuffle"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="R" FontFamily="Consolas" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Text="Cycle repeat mode"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Q" FontFamily="Consolas" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Text="Open queue"/>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="L" FontFamily="Consolas" FontWeight="SemiBold"/>
+                    <TextBlock Grid.Row="7" Grid.Column="1" Text="Open lyrics"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
