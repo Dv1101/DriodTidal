@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DroidTidal (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DroidTidal (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
