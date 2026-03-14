@@ -1,0 +1,23 @@
+# Build folders
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Packages
+packages/
+*.nupkg
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+
+# VS Code
+.vscode/
+
+# Local Settings
+settings.json
+library.db
