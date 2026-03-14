@@ -21,49 +21,32 @@ public partial class App : Application
     public App()
     {
         this.InitializeComponent();
+
+        // Initialize LibVLC Core early, like Droid Music
+        try 
+        { 
+            LibVLCSharp.Shared.Core.Initialize(); 
+        } 
+        catch (Exception ex) 
+        { 
+            System.Diagnostics.Debug.WriteLine($"LibVLC Core Init FAILED: {ex.Message}"); 
+        }
+
+        SettingsService = new SettingsService();
+        ApiService = new TidalApiService(SettingsService);
+        PlayerService = new AudioPlayerService(ApiService);
+        LibraryService = new LibraryService();
     }
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
         try
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(LogPath)!);
-            File.WriteAllText(LogPath, "--- STARTUP ---\n");
-            WriteLog("OnLaunched started");
-
-            // Initialize LibVLC Core before anything else
-            try 
-            { 
-                LibVLCSharp.Shared.Core.Initialize(); 
-                WriteLog("LibVLC Core Initialized");
-            } 
-            catch (Exception ex) 
-            { 
-                WriteLog($"LibVLC Core Init FAILED: {ex.Message}"); 
-            }
-
-            WriteLog("Initializing Settings");
-            SettingsService = new SettingsService();
-            
-            WriteLog("Initializing API");
-            ApiService = new TidalApiService(SettingsService);
-            
-            WriteLog("Initializing Player");
-            PlayerService = new AudioPlayerService(ApiService);
-            
-            WriteLog("Initializing Library");
-            LibraryService = new LibraryService();
-
-            WriteLog("Creating MainWindow");
             _window = new MainWindow();
-            
-            WriteLog("Activating MainWindow");
             _window.Activate();
-            WriteLog("MainWindow Activated");
         }
         catch (Exception ex)
         {
-            WriteLog($"FATAL STARTUP ERROR: {ex}");
             System.Diagnostics.Debug.WriteLine($"FATAL STARTUP ERROR: {ex}");
             throw; 
         }

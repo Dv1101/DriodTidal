@@ -11,12 +11,11 @@ public static class Program
     [STAThread]
     static void Main(string[] args)
     {
-        // For unpackaged apps, we must initialize the Windows App SDK before any UI code runs.
-        // We use the bootstrapper to find the runtime.
+        // For unpackaged apps, we must initialize the Windows App SDK bootstrapper.
         try
         {
-            // Initialize the bootstrapper
-            Bootstrap.Initialize(0x00010008, "1.8"); // Version 1.8
+            // Initialize the bootstrapper for 1.8
+            Bootstrap.Initialize(0x00010008, "1.8"); 
             
             Application.Start((p) =>
             {
@@ -27,7 +26,6 @@ public static class Program
         }
         catch (Exception ex)
         {
-            // Write to a persistent file since the app is about to die
             var logPath = System.IO.Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "DroidTidal", "fatal_crash.log");
