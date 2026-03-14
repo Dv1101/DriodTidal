@@ -16,8 +16,11 @@ public sealed partial class MainWindow : Window
     {
         this.InitializeComponent();
 
-        // Enable Mica backdrop
-        this.SystemBackdrop = new Microsoft.UI.Xaml.Media.MicaBackdrop();
+        // Enable Mica backdrop if supported
+        if (Microsoft.UI.Composition.SystemBackdrops.MicaController.IsSupported())
+        {
+            this.SystemBackdrop = new Microsoft.UI.Xaml.Media.MicaBackdrop();
+        }
 
         // Set title bar
         ExtendsContentIntoTitleBar = true;

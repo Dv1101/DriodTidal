@@ -48,7 +48,7 @@ public partial class AudioPlayerService : IDisposable
     public AudioPlayerService(TidalApiService api)
     {
         _api = api;
-        InitializeVlc();
+        // Initialization is now called explicitly from App.OnLaunched
     }
 
     private void InitializeVlc()
