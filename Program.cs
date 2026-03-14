@@ -16,7 +16,7 @@ public static class Program
         try
         {
             // Initialize the bootstrapper
-            Bootstrap.Initialize(0x00010006, "1.6"); // Version 1.6
+            Bootstrap.Initialize(0x00010008, "1.8"); // Version 1.8
             
             Application.Start((p) =>
             {
