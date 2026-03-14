@@ -11,6 +11,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <WindowsAppSdkBootstrapInitialize>true</WindowsAppSdkBootstrapInitialize>
+    <EnableDefaultWinUIExeEntryPoint>false</EnableDefaultWinUIExeEntryPoint>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +24,14 @@
     <PackageReference Include="LibVLCSharp" Version="3.9.6" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.5" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7705" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260209005" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007" />
     <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.23" />
   </ItemGroup>
+
+  <Target Name="CopyNativeBinaries" AfterTargets="Build">
+    <ItemGroup>
+      <NativeBinaries Include="$(OutDir)runtimes\win-x64\native\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(NativeBinaries)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
 </Project>
